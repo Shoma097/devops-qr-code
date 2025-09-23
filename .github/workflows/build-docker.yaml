@@ -16,7 +16,10 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
       - name: Build image
-        run: docker build ./api/ -t zennnnnnnnnn/devops-qr-code-backend:latest
-
+        run: |
+          docker build ./api/ -t zennnnnnnnnn/devops-qr-code-backend:latest       
+          docker build ./front-end-nextjs/ -t zennnnnnnnnn/devops-qr-code-frontend:latest 
       - name: Push image to Docker Hub
-        run: docker push zennnnnnnnnn/devops-qr-code-backend:latest
+        run: |
+          docker push zennnnnnnnnn/devops-qr-code-backend:latest
+          docker push zennnnnnnnnn/devops-qr-code-frontend:latest
